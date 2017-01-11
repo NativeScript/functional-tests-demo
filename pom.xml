@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>functional.tests</groupId>
+    <artifactId>functional.tests</artifactId>
+    <version>0.0.1</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <profiles>
+        <!--native app profiles-->
+        <profile>
+            <id>native.emu.default.api19</id>
+            <properties>
+                <app.config>native/native.emu.default.api19.properties</app.config>
+                <testsuite>nativeapp</testsuite>
+            </properties>
+        </profile>
+        <profile>
+            <id>native.emu.default.api23</id>
+            <properties>
+                <app.config>native/native.emu.default.api23.properties</app.config>
+                <testsuite>nativeapp</testsuite>
+            </properties>
+        </profile>
+        <profile>
+            <id>native.sim.iphone7.ios100</id>
+            <properties>
+                <app.config>native/native.sim.iphone7.ios100.properties</app.config>
+                <testsuite>nativeapp</testsuite>
+            </properties>
+        </profile>
+        <!--hybrid app profiles-->
+        <profile>
+            <id>hybridapp.emu.default.api19</id>
+            <properties>
+                <app.config>hybrid/hybridapp.emu.default.api19.properties</app.config>
+                <testsuite>hybridapp</testsuite>
+            </properties>
+        </profile>
+        <profile>
+            <id>hybridapp.emu.default.api23</id>
+            <properties>
+                <app.config>hybrid/hybridapp.emu.default.api23.properties</app.config>
+                <testsuite>hybridapp</testsuite>
+            </properties>
+        </profile>
+        <profile>
+            <id>hybridapp.sim.iphone7.ios100</id>
+            <properties>
+                <app.config>hybrid/hybridapp.sim.iphone7.ios100.properties</app.config>
+                <testsuite>hybridapp</testsuite>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>functional.tests.core</groupId>
+            <artifactId>functional.tests.core</artifactId>
+            <version>0.0.5</version>
+            <systemPath>${project.basedir}/libs/functional.tests.core-0.0.5.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.10</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>saxon</artifactId>
+            <version>8.7</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>resources/suites/${testsuite}.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <appConfig>resources/config/${app.config}</appConfig>
+                    </systemPropertyVariables>
+                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <configuration>
+                            <tasks>
+                                <property name="basedir" value="."/>
+                                <property name="LIB" value="${basedir}/libs"/>
+                                <delete dir="${basedir}/target/surefire-reports/html">
+                                </delete>
+                                <mkdir dir="${basedir}/target/surefire-reports/html">
+                                </mkdir>
+                                <xslt in="${basedir}/target/surefire-reports/testng-results.xml"
+                                      style="${basedir}/resources/report/testng-results.xsl"
+                                      out="${basedir}/target/surefire-reports/html/index.html">
+                                    <param expression="${basedir}/target/surefire-reports/html/"
+                                           name="testNgXslt.outputDir"/>
+                                    <param expression="true" name="testNgXslt.sortTestCaseLinks"/>
+                                    <param expression="FAIL,SKIP,PASS,BY_CLASS" name="testNgXslt.testDetailsFilter"/>
+                                    <param expression="true" name="testNgXslt.showRuntimeTotals"/>
+                                    <classpath location="${net.sf.saxon:saxon:jar}"/>
+                                </xslt>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

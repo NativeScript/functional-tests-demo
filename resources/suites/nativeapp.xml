@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Native Demo App Tests" verbose="1">
+    <test name="Smoke Tests">
+        <classes>
+            <class name="nativeapp.tests.SmokeTests"/>
+        </classes>
+    </test>
+</suite>
