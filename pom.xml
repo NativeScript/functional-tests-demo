@@ -15,45 +15,45 @@
     <profiles>
         <!--native app profiles-->
         <profile>
-            <id>native.emu.default.api19</id>
+            <id>nativeapp.emu.default.api19</id>
             <properties>
-                <app.config>native/native.emu.default.api19.properties</app.config>
-                <testsuite>nativeapp</testsuite>
+                <app.config>nativeapp/native.emu.default.api19.properties</app.config>
+                <testsuite>nativeapp-android</testsuite>
             </properties>
         </profile>
         <profile>
-            <id>native.emu.default.api23</id>
+            <id>nativeapp.emu.default.api23</id>
             <properties>
-                <app.config>native/native.emu.default.api23.properties</app.config>
-                <testsuite>nativeapp</testsuite>
+                <app.config>nativeapp/nativeapp.emu.default.api23.properties</app.config>
+                <testsuite>nativeapp-android</testsuite>
             </properties>
         </profile>
         <profile>
-            <id>native.sim.iphone7.ios100</id>
+            <id>nativeapp.sim.iphone7.ios100</id>
             <properties>
-                <app.config>native/native.sim.iphone7.ios100.properties</app.config>
-                <testsuite>nativeapp</testsuite>
+                <app.config>nativeapp/nativeapp.sim.iphone7.ios100.properties</app.config>
+                <testsuite>nativeapp-ios</testsuite>
             </properties>
         </profile>
         <!--hybrid app profiles-->
         <profile>
             <id>hybridapp.emu.default.api19</id>
             <properties>
-                <app.config>hybrid/hybridapp.emu.default.api19.properties</app.config>
+                <app.config>hybridapp/hybridapp.emu.default.api19.properties</app.config>
                 <testsuite>hybridapp</testsuite>
             </properties>
         </profile>
         <profile>
             <id>hybridapp.emu.default.api23</id>
             <properties>
-                <app.config>hybrid/hybridapp.emu.default.api23.properties</app.config>
+                <app.config>hybridapp/hybridapp.emu.default.api23.properties</app.config>
                 <testsuite>hybridapp</testsuite>
             </properties>
         </profile>
         <profile>
             <id>hybridapp.sim.iphone7.ios100</id>
             <properties>
-                <app.config>hybrid/hybridapp.sim.iphone7.ios100.properties</app.config>
+                <app.config>hybridapp/hybridapp.sim.iphone7.ios100.properties</app.config>
                 <testsuite>hybridapp</testsuite>
             </properties>
         </profile>
@@ -64,7 +64,6 @@
             <groupId>functional.tests.core</groupId>
             <artifactId>functional.tests.core</artifactId>
             <version>0.0.5</version>
-            <systemPath>${project.basedir}/libs/functional.tests.core-0.0.5.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>

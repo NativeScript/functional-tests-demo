@@ -1,6 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Native Demo App Tests" verbose="1">
     <test name="Smoke Tests">
+        <groups>
+            <run>
+                <include name="android"/>
+            </run>
+        </groups>
         <classes>
             <class name="nativeapp.tests.SmokeTests"/>
         </classes>

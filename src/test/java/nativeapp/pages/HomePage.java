@@ -38,6 +38,7 @@ public class HomePage extends BasePage {
      * @return Message element.
      */
     private UIElement message() {
+        // locators.textViewLocator() is cross-platform locator that will find TextView elements for both Android and iOS.
         List<UIElement> textViews = this.find.elementsByLocator(this.locators.textViewLocator());
         if (textViews != null && !textViews.isEmpty()) {
             return textViews.get(textViews.size() - 1);
