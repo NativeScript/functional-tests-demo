@@ -79,14 +79,14 @@ public class SmokeTests extends UIBaseTest {
         String message = homePage.getMessageText();
 
         // Currently rotation is not exposed in app, but this is great example to show how to use appium driver
-        this.testContext.client.driver.rotate(ScreenOrientation.LANDSCAPE);
+        this.device.rotate(ScreenOrientation.LANDSCAPE);
         this.log.info("Rotate to LANDSCAPE"); // This is a sample how to log something.
 
         // Verify message is same after rotation
         Assert.assertEquals(homePage.getMessageText(), message, "Message is not changed after tap.");
 
         // Rotate one more time
-        this.testContext.client.driver.rotate(ScreenOrientation.PORTRAIT);
+        this.device.rotate(ScreenOrientation.PORTRAIT);
         this.log.info("Rotate to PORTRAIT"); // This is a sample how to log something.
 
         // Verify message is same after rotation
