@@ -71,6 +71,11 @@
             <version>6.10</version>
         </dependency>
         <dependency>
+            <groupId>com.sikulix</groupId>
+            <artifactId>sikulixapi</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>saxon</artifactId>
             <version>8.7</version>
