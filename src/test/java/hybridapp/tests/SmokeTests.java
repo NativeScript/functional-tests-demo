@@ -22,6 +22,6 @@ public class SmokeTests extends UIBaseTest {
         s.waitForImage("device_info_sample", 0.9D, this.settings.defaultTimeout);
         s.waitForImage("os_version", 0.9D, this.settings.defaultTimeout);
         s.findImageOnScreen("os_version", 0.9D).tap();
-        s.waitForImage("4.4.2", 0.9D, this.settings.defaultTimeout);
+        s.waitForImage("actual_version", 0.9D, this.settings.defaultTimeout);
     }
 }

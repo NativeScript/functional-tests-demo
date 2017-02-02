@@ -7,14 +7,10 @@ public class HomePage extends BasePage {
 
     private String titleImage = "device_info_sample";
     private String osVersionButtonImage = "os_version";
-    private String osVersionLabelImage = "4.4.2";
+    private String osVersionLabelImage = "actual_version";
 
     private UIRectangle osVersionButton() {
         return this.context.sikuliImageProcessing.findImageOnScreen(this.osVersionButtonImage, 0.9D);
-    }
-
-    private UIRectangle osVersionLabel() {
-        return this.context.sikuliImageProcessing.findImageOnScreen(this.osVersionLabelImage, 0.9D);
     }
 
     private void loaded() {
@@ -32,7 +28,7 @@ public class HomePage extends BasePage {
     }
 
     public void assertOSVersion() {
-        this.context.sikuliImageProcessing.waitForImage(this.osVersionButtonImage, 0.9D, this.settings.defaultTimeout);
+        this.context.sikuliImageProcessing.waitForImage(this.osVersionLabelImage, 0.9D, this.settings.defaultTimeout);
         this.log.info("OS Version is correct.");
     }
 }
