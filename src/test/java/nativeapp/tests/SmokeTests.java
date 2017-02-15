@@ -40,7 +40,7 @@ public class SmokeTests extends UIBaseTest {
         Assert.assertEquals(changedText, "41 taps left", "Message is not changed after tap.");
 
         // Expected image is different on purpose,
-        // just ro demo what happens when images do not match.
+        // just to show what happens when images do not match.
         this.assertScreen(this.settings.shortTimeout);
     }
 

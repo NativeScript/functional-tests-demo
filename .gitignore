@@ -2,4 +2,5 @@
 .idea/
 test-output
 target*/
+testapp/*.app
 
