@@ -31,7 +31,7 @@
         <profile>
             <id>nativeapp.sim.iphone7.ios100</id>
             <properties>
-                <app.config>nativeapp/nativeapp.sim.iphone7.ios100.properties</app.config>
+                <app.config>nativeapp/nativeapp.sim.iphone7.ios10.properties</app.config>
                 <testsuite>nativeapp-ios</testsuite>
             </properties>
         </profile>
