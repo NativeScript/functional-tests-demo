@@ -46,6 +46,23 @@ mvn clean test -P nativeapp.emu.default.api23
 
 **Run tests in Eclipse/IntelliJ IDEA**
 
+- Open functional-tests-core in IntelliJ 
+    - Select 'Use auto import option'
+    - Select 'Use cradle wrapper task configuration'
+    - Click OK and Build the project
+- Open functional-tests-demo project in IntelliJ
+- From the File menu select Import->Modules from existing sources
+    - Select the functional-test-core folder
+- Open Project Structure menu
+- In Modules submenu for the functional-test-demo project add dependencies
+    - add Libraries - select all available
+    - add Modules dependency - select the functional.tests.core_main
+    - Switch to Sources Tab: 
+      mark src->tests->java folder as 'Tests'
+      mark resources folder as 'Resources'
+- In Project submenu create output folder - < project root >/classes
+      
+
 Place this in Vm options: 
 ```
 -DappConfig=resources/config/nativeapp/nativeapp.emu.default.api23.properties
